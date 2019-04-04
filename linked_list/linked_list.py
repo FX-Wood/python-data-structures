@@ -25,6 +25,18 @@ class LinkedList():
             output += f" \033[96mNone\033[00m"
             print(output)
     
+    def get(self, index):
+        count = 0
+        current = self.head
+        if current == None:
+            return []
+        else:
+            while current != None and count < index:
+                count += 1
+                current = current.pointer
+        return current.data
+
+    
     def delete(self, index):
         current = self.head
         if index == 0:
@@ -46,7 +58,7 @@ class LinkedList():
         if current == None:
             self.head = ListNode(data)
         else:
-            while insert_index < index and current.pointer != None:
+            while insert_index < index - 1 and current.pointer != None:
                 current = current.pointer
                 insert_index += 1
             new_node = ListNode(data)
