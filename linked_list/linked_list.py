@@ -27,7 +27,9 @@ class LinkedList():
     
     def delete(self, index):
         current = self.head
-        if current == None:
+        if index == 0:
+            self.head = current.pointer
+        elif current == None:
             return Exception('Cannot delete from empty list')
         else:
             i = 0
