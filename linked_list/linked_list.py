@@ -16,11 +16,9 @@ class LinkedList():
     def print(self, delimiter='-->'):
         current = self.head
         if current == None:
-            print('current is none')
             return 'None'
         else:
-            print('found current', current.data)
-            output = ''
+            output = '\033[91mHEAD\033[00m: '
             while current != None:
                 output += current.data + delimiter
                 current = current.pointer
@@ -39,4 +37,17 @@ class LinkedList():
                 current = current.pointer
                 i += 1
             current.pointer = current.pointer.pointer
-            
+    
+    def insert(self, data, index):
+        current = self.head
+        insert_index = 0
+        if current == None:
+            self.head = ListNode(data)
+        else:
+            while insert_index < index and current.pointer != None:
+                current = current.pointer
+                insert_index += 1
+            new_node = ListNode(data)
+            new_node.pointer = current.pointer
+            current.pointer = new_node
+        return insert_index
