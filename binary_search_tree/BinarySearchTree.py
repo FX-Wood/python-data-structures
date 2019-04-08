@@ -52,3 +52,12 @@ class BinarySearchTree():
                 self.pre_order(node.left)
             if node.right:
                 self.pre_order(node.right)
+
+    def post_order(self, node):
+        # left, right, root
+        if node:
+            if node.left:
+                self.post_order(node)
+            if node.right:
+                self.post_order(node)
+            print(node.data)
