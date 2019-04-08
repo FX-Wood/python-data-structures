@@ -32,3 +32,14 @@ class BinarySearchTree():
             elif data > node.data:
                 node.right = self.insert(data, node)
             return node
+    
+    def in_order(self, node):
+        # left, root, right
+        if node:
+            if node.left:
+                self.in_order(node.left)
+            
+            print(node.data)
+
+            if node.right:
+                self.in_order(node.right)
