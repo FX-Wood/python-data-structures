@@ -43,3 +43,12 @@ class BinarySearchTree():
 
             if node.right:
                 self.in_order(node.right)
+
+    def pre_order(self, node):
+        # root, left, right
+        if node:
+            print(node.data)
+            if node.left:
+                self.pre_order(node.left)
+            if node.right:
+                self.pre_order(node.right)
