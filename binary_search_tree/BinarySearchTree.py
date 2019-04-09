@@ -32,38 +32,47 @@ class BinarySearchTree():
             elif data > node.data:
                 node.right = self.insert(data, node)
             return node
-    
-    def in_order(self, node=None):
+
+    def traverse(self, type_number):
+        output = []
+        if type_number == 'in_order':
+            self.in_order(output)
+        if type_number == 'pre_order':
+            self.pre_order(output)
+        if type_number == 'post_order':
+            self.post_order(output)
+        return output
+
+
+    def in_order(self, output, node=None):
         # left, root, right
         if not node:
             node = self.root
         if node:
             if node.left:
-                self.in_order(node.left)
-            
-            print(node.data)
-
+                self.in_order(output, node.left)
+            output.append(node.data)
             if node.right:
-                self.in_order(node.right)
+                self.in_order(output, node.right)
 
-    def pre_order(self, node=None):
+    def pre_order(self, output, node=None):
         # root, left, right
         if not node:
             node = self.root
         if node:
-            print(node.data)
+            output.append(node.data)
             if node.left:
-                self.pre_order(node.left)
+                self.pre_order(output, node.left)
             if node.right:
-                self.pre_order(node.right)
+                self.pre_order(output, node.right)
 
-    def post_order(self, node=None):
+    def post_order(self, output, node=None):
         # left, right, root
         if not node:
             node = self.root
         if node:
             if node.left:
-                self.post_order(node)
+                self.post_order(output, node)
             if node.right:
-                self.post_order(node)
-            print(node.data)
+                self.post_order(output, node)
+            output.append(node.data)
